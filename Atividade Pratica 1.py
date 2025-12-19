@@ -53,7 +53,7 @@ def CalculoProdutos():
     # Cálculo dos produtos
     valor = preco * quantidade
 
-    print(f"O preço total dos produtos é : {valor} ")
+    print(f"O preço total da {produto} é : {valor} ")
 
 
 ###########################################
