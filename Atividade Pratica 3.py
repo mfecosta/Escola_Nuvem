@@ -2,8 +2,8 @@
 print("Escolha uma atividade no menu abaixo:")
 print("1 - Classificação criança, jovem e adulto e idoso")
 print("2 - Cálculo de IMC")
-print("3 - Média de alunos")
-print("4 - Consumo médio de combustível")
+print("3 - Conversor Temperatura")
+print("4 - Calculo de ano bissexto")
 print("5 - Sair")
 print("Digite o valor da atividade:\n")
 
@@ -39,60 +39,60 @@ def CalculoImc():
         print("Obesidade")
 
     print(f"Seu IMC é: {imc:.2f}")
-    
-###########################################
-###########################################
-
-## Função Calculadora Média de notas ###
-def MediaDeNotas():
-    nota1 = 7.5
-    nota2 = 8.0
-    nota3 =6.5
-    MediaDeNotas = (nota1 + nota2 + nota3) / 3
-    # Cálculo da média das notas
-    print(f"A média das notas é : {MediaDeNotas:.2f} ")
 
 ###########################################
 ###########################################
 
+## Função Conversor de Temperatura ###
+def ConversorTemperatura(valor, origem, destino):
+    origem = origem.upper()
+    destino = destino.upper()
 
-## Função Calculo de Consumo de Combustível ###
-def ConsumoMedio():
-    produto = "Cadeira Infantil"
-    preco = 12.40
-    quantidade = 3
+    if origem == "C" and destino == "F":
+        return (valor * 9/5) + 32
+    elif origem == "C" and destino == "K":
+        return valor + 273.15
+    elif origem == "F" and destino == "C":
+        return (valor - 32) * 5/9
+    elif origem == "F" and destino == "K":
+        return (valor - 32) * 5/9 + 273.15
+    elif origem == "K" and destino == "C":
+        return valor - 273.15
+    elif origem == "K" and destino == "F":
+        return (valor - 273.15) * 9/5 + 32
+    else:
+        return valor  # mesma unidade
 
-    # Cálculo dos produtos
-    valor = preco * quantidade
+# Uso do método
+valor = float(input("Digite a temperatura: "))
+origem = input("Origem (C/F/K): ")
+destino = input("Destino (C/F/K): ")
 
-    print(f"O preço total da {produto} é : {valor} ")
+resultado = ConversorTemperatura(valor, origem, destino)
+print(f"{valor} {origem.upper()} = {resultado:.2f} {destino.upper()}")
 
-##########################################################
-##########################################################
+###########################################
+###########################################
 
-
-## Função Calculadora  ###
-def ConsumoMedio():
-    distancia = 300  # em km
-    combustivelgasto = 25  # em litros
-    ConsumoMedio = distancia / combustivelgasto
-
-    # Cálculo do consumo médio
-    print(f"O consumo médio de combustível é : {ConsumoMedio:.2f} km/l, percorrendo {distancia} km com {combustivelgasto} litros de combustível ")
-
+## Função Ano bissexto ###
+def calculoAnoBissexto():
+    ano = int(input("Digite o ano: "))
+    if (ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0):
+        print(f"{ano} é um ano bissexto.")
+    else:
+        print(f"{ano} não é um ano bissexto.")
 ###########################################
 ###########################################
 
 # Verificação da escolha
 if num == 1:
    ClassificacaoIdade()
-
 elif num == 2:
     CalculoImc()
 elif num == 3:
-    MediaDeNotas()
+    ConversorTemperatura()
 elif num == 4:
-    ConsumoMedio()
+    calculoAnoBissexto()
 elif num == 5:
     print("Saindo...")
 else:
